@@ -19,7 +19,6 @@ set(CMAKE_MODULE_PATH
   ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 ## ======================================================================== ##
 find_package(OpenGL REQUIRED)
-option(ENABLE_GLFW "Enable GLFW Library" ON)
 set(GLFW_BUILD_DOCS     OFF)
 set(GLFW_BUILD_EXAMPLES OFF)
 set(GLFW_BUILD_TESTS    OFF)
