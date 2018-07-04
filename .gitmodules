@@ -1,3 +1,6 @@
 [submodule "ImGui/upstream"]
 	path = ImGui/upstream
 	url = https://github.com/ocornut/imgui.git
+[submodule "test"]
+	path = test
+	url = git@github.com:wilsonCernWq/OSPRayVolumeExperiment.git
