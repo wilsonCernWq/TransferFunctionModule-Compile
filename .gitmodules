@@ -4,3 +4,6 @@
 [submodule "test"]
 	path = test
 	url = git@github.com:wilsonCernWq/OSPRayVolumeExperiment.git
+[submodule "glfw"]
+	path = glfw
+	url = https://github.com/glfw/glfw.git

@@ -9,30 +9,31 @@ endif ()
 ## ======================================================================== ##
 if (NOT TARGET glfw)
   if (EXISTS ${PROJECT_SOURCE_DIR}/glfw)
+    # glfw
     set(GLFW_BUILD_DOCS     OFF)
     set(GLFW_BUILD_EXAMPLES OFF)
     set(GLFW_BUILD_TESTS    OFF)
     set(GLFW_INSTALL        OFF)
     add_subdirectory(${PROJECT_SOURCE_DIR}/glfw)
+    set_target_properties(glfw PROPERTIES
+      INTERFACE_COMPILE_DEFINITIONS USE_GLFW=1)
+    # glad
     if (NOT TARGET glad)
       add_library(glad
-        ${GLFW_SOURCE_DIR}/deps/glad/glad.h
-        ${GLFW_SOURCE_DIR}/deps/glad.c)
+        ${PROJECT_SOURCE_DIR}/deps/glad.c)
       target_include_directories(glad PUBLIC
         "$<BUILD_INTERFACE:"
+        "${PROJECT_SOURCE_DIR}/deps;"
         "${PROJECT_SOURCE_DIR}/glfw;"
         "${PROJECT_SOURCE_DIR}/glfw/include;"
-        "${PROJECT_SOURCE_DIR}/glfw/deps;"
         ">")
     endif ()
     target_include_directories(glfw INTERFACE
       "$<BUILD_INTERFACE:"
+      "${PROJECT_SOURCE_DIR}/deps;"
       "${PROJECT_SOURCE_DIR}/glfw;"
       "${PROJECT_SOURCE_DIR}/glfw/include;"
-      "${PROJECT_SOURCE_DIR}/glfw/deps;"
       ">")
-    set_target_properties(glfw PROPERTIES
-      INTERFACE_COMPILE_DEFINITIONS USE_GLFW=1)
   else ()
     messate(FATAL_ERROR "cannot find glfw")
   endif ()
