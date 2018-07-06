@@ -17,6 +17,12 @@ if (NOT TARGET glfw)
     add_subdirectory(${PROJECT_SOURCE_DIR}/glfw)
     set_target_properties(glfw PROPERTIES
       INTERFACE_COMPILE_DEFINITIONS USE_GLFW=1)
+    target_include_directories(glfw INTERFACE
+      "$<BUILD_INTERFACE:"
+      "${PROJECT_SOURCE_DIR}/deps;"
+      "${PROJECT_SOURCE_DIR}/glfw;"
+      "${PROJECT_SOURCE_DIR}/glfw/include;"
+      ">")
     # glad
     if (NOT TARGET glad)
       add_library(glad
@@ -28,12 +34,6 @@ if (NOT TARGET glfw)
         "${PROJECT_SOURCE_DIR}/glfw/include;"
         ">")
     endif ()
-    target_include_directories(glfw INTERFACE
-      "$<BUILD_INTERFACE:"
-      "${PROJECT_SOURCE_DIR}/deps;"
-      "${PROJECT_SOURCE_DIR}/glfw;"
-      "${PROJECT_SOURCE_DIR}/glfw/include;"
-      ">")
   else ()
     messate(FATAL_ERROR "cannot find glfw")
   endif ()
