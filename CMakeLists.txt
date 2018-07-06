@@ -38,7 +38,7 @@ set_target_properties(tfn_module_core
 if(OSPRAY_MODULE_PARAVIEW_TFN_CVT)
   add_executable(tfnConvertFromParaView
     ${PROJECT_SOURCE_DIR}/../src/apps/ConvertTFNParaView.cpp
-    ${PROJECT_SOURCE_DIR}/../src/common/jsoncpp.cpp)
+    ${PROJECT_SOURCE_DIR}/../src/common/json/jsoncpp.cpp)
   target_link_libraries(tfnConvertFromParaView
     tfn_module_core imgui glfw OpenGL)
   set_target_properties(tfnConvertFromParaView
