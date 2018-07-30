@@ -16,7 +16,8 @@ if (NOT TARGET glfw)
     set(GLFW_INSTALL        OFF)
     add_subdirectory(${PROJECT_SOURCE_DIR}/external/glfw/upstream)
     set_target_properties(glfw PROPERTIES
-      INTERFACE_COMPILE_DEFINITIONS USE_GLFW=1)
+      INTERFACE_COMPILE_DEFINITIONS USE_GLFW=1
+      COMPILE_FLAGS "-w")
     target_include_directories(glfw INTERFACE
       "$<BUILD_INTERFACE:"
       "${PROJECT_SOURCE_DIR}/external/glfw/deps;"
@@ -27,6 +28,7 @@ if (NOT TARGET glfw)
     if (NOT TARGET glad)
       add_library(glad
         ${PROJECT_SOURCE_DIR}/external/glfw/deps/glad.c)
+      set_target_properties(glad PROPERTIES COMPILE_FLAGS "-w")
       target_include_directories(glad PUBLIC
         "$<BUILD_INTERFACE:"
         "${PROJECT_SOURCE_DIR}/external/glfw/deps;"

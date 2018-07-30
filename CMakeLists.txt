@@ -21,7 +21,8 @@ include(packages.cmake)
 #
 # core library
 #
-add_library(tfn_module_core 
+add_library(tfn_module_core
+  ${PROJECT_SOURCE_DIR}/source/src/TransferFunctionModule.h 
   ${PROJECT_SOURCE_DIR}/source/src/TransferFunctionModule.cpp) 
 target_include_directories(tfn_module_core PUBLIC
   "$<BUILD_INTERFACE:"
@@ -33,28 +34,32 @@ set_target_properties(tfn_module_core
 
 ## ======================================================================== ##
 #
+# ImGui widget
+#
+add_library(tfn_module_core_widgets 
+  ${PROJECT_SOURCE_DIR}/source/src/widgets/DefaultTransferFunctionMaps.h
+  ${PROJECT_SOURCE_DIR}/source/src/widgets/HelperFunctions.h
+  ${PROJECT_SOURCE_DIR}/source/src/widgets/TransferFunctionWidget.h
+  ${PROJECT_SOURCE_DIR}/source/src/widgets/TransferFunctionWidget.cpp) 
+target_link_libraries(tfn_module_core_widgets
+  tfn_module_core imgui glfw OpenGL)
+set_target_properties(tfn_module_core_widgets
+  PROPERTIES CXX_STANDARD 11)
+
+## ======================================================================== ##
+#
 # Paraview Converter
 #
 if(OSPRAY_MODULE_PARAVIEW_TFN_CVT)
   add_executable(tfnConvertFromParaView
+    ${PROJECT_SOURCE_DIR}/source/src/apps/ConvertTFNParaView.h
     ${PROJECT_SOURCE_DIR}/source/src/apps/ConvertTFNParaView.cpp
+    ${PROJECT_SOURCE_DIR}/source/src/common/json/json-forwards.h
+    ${PROJECT_SOURCE_DIR}/source/src/common/json/json.h
     ${PROJECT_SOURCE_DIR}/source/src/common/json/jsoncpp.cpp)
   target_link_libraries(tfnConvertFromParaView
     tfn_module_core imgui glfw glad OpenGL)
   set_target_properties(tfnConvertFromParaView
-    PROPERTIES CXX_STANDARD 11)
-endif()
-
-## ======================================================================== ##
-#
-# ImGui widget
-#
-if(OSPRAY_MODULE_TFN_WIDGET)
-  add_library(tfn_module_core_widgets 
-    ${PROJECT_SOURCE_DIR}/source/src/widgets/TransferFunctionWidget.cpp) 
-  target_link_libraries(tfn_module_core_widgets
-    tfn_module_core imgui glfw OpenGL)
-  set_target_properties(tfn_module_core_widgets
     PROPERTIES CXX_STANDARD 11)
 endif()
 
