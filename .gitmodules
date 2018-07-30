@@ -4,3 +4,9 @@
 [submodule "source"]
 	path = source
 	url = git@github.com:wilsonCernWq/TransferFunctionModule.git
+[submodule "external/imgui/upstream"]
+	path = external/imgui/upstream
+	url = https://github.com/ocornut/imgui.git
+[submodule "external/glfw/upstream"]
+	path = external/glfw/upstream
+	url = https://github.com/glfw/glfw.git
