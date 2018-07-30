@@ -1,12 +1,6 @@
-[submodule "ImGui/upstream"]
-	path = ImGui/upstream
-	url = https://github.com/ocornut/imgui.git
 [submodule "test"]
 	path = test
 	url = git@github.com:wilsonCernWq/OSPRayVolumeExperiment.git
-[submodule "glfw"]
-	path = glfw
-	url = https://github.com/glfw/glfw.git
 [submodule "source"]
 	path = source
 	url = git@github.com:wilsonCernWq/TransferFunctionModule.git
