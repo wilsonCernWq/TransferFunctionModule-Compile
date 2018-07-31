@@ -3,6 +3,12 @@
 #
 if (NOT TARGET imgui)
   add_library(imgui
+    upstream/stb_rect_pack.h
+    upstream/stb_textedit.h
+    upstream/stb_truetype.h
+    upstream/imconfig.h
+    upstream/imgui.h
+    upstream/imgui_internal.h
     upstream/imgui.cpp
     upstream/imgui_draw.cpp
     upstream/imgui_demo.cpp
