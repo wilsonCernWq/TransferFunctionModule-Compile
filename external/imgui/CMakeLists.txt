@@ -13,7 +13,7 @@ if (NOT TARGET imgui)
     upstream/imgui_draw.cpp
     upstream/imgui_demo.cpp
     opengl3_example/imgui_impl_glfw_gl3.cpp)
-  target_link_libraries(imgui glad glfw OpenGL)
+  target_link_libraries(imgui glfw glad OpenGL)
   target_include_directories(imgui PUBLIC
     "$<BUILD_INTERFACE:"
     "${CMAKE_CURRENT_LIST_DIR}/upstream;"

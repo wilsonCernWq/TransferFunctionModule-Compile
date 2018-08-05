@@ -28,9 +28,8 @@ target_include_directories(tfn_module_core PUBLIC
   "$<BUILD_INTERFACE:"
   "${PROJECT_SOURCE_DIR}/source/src;"
   ">")
-target_link_libraries(tfn_module_core imgui glfw glad OpenGL)
 set_target_properties(tfn_module_core
-  PROPERTIES CXX_STANDARD 11)
+  PROPERTIES CXX_STANDARD 14)
 
 ## ======================================================================== ##
 #
@@ -42,9 +41,9 @@ add_library(tfn_module_core_widgets
   ${PROJECT_SOURCE_DIR}/source/src/widgets/TransferFunctionWidget.h
   ${PROJECT_SOURCE_DIR}/source/src/widgets/TransferFunctionWidget.cpp) 
 target_link_libraries(tfn_module_core_widgets
-  tfn_module_core imgui glfw OpenGL)
+  tfn_module_core imgui glfw glad OpenGL)
 set_target_properties(tfn_module_core_widgets
-  PROPERTIES CXX_STANDARD 11)
+  PROPERTIES CXX_STANDARD 14)
 
 ## ======================================================================== ##
 #
@@ -57,10 +56,9 @@ if(OSPRAY_MODULE_PARAVIEW_TFN_CVT)
     ${PROJECT_SOURCE_DIR}/source/src/common/json/json-forwards.h
     ${PROJECT_SOURCE_DIR}/source/src/common/json/json.h
     ${PROJECT_SOURCE_DIR}/source/src/common/json/jsoncpp.cpp)
-  target_link_libraries(tfnConvertFromParaView
-    tfn_module_core imgui glfw glad OpenGL)
+  target_link_libraries(tfnConvertFromParaView tfn_module_core)
   set_target_properties(tfnConvertFromParaView
-    PROPERTIES CXX_STANDARD 11)
+    PROPERTIES CXX_STANDARD 14)
 endif()
 
 ## ======================================================================== ##
